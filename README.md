@@ -1,6 +1,6 @@
 # Glyphboard Documentation 
 
-This documentation is based on Jekyll Doc Theme. Go to [the website](https://aksakalli.github.io/jekyll-doc-theme/) for detailed information and demo.
+This documentation is based on Jekyll Doc Theme. Go to [the website](https://aksakalli.github.io/jekyll-doc-theme/) for detailed information and demo. Visit the [Glyphboard Documentation](https://visualengineers.github.io/glyphboard-doc/).
 
 ## Running locally
 
