@@ -19,7 +19,7 @@ Or a specific build environment such as:
 $ ng build --configuration=medical
 ```
 
-SSH to App-Server and `git clone git@gitlab.mg.inf.tu-dresden.de:vanda/glyphboard.git` (add SSH-Key from server to project first).
+SSH to App-Server and `git clone --recursive git@github.com:visualengineers/glyphboard.git` (add SSH-Key from server to project first).
 
 Upload files from `dist` folder to new Ajenti Website via FTP user (root directory). Or build directly on server and copy contents of `dist` to root folder.
 
