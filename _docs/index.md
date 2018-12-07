@@ -1,7 +1,7 @@
 ---
 title: Welcome
 permalink: /home/
-redirect_from: /
+redirect_from: /glyphboard-doc/
 ---
 
 ## Getting started
