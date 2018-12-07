@@ -6,45 +6,47 @@ redirect_from: /
 
 ## Getting started
 
-[GitHub Pages](https://pages.github.com) can automatically generate and serve the website for you.
-Let's say you have a username/organisation `my-org` and project `my-proj`; if you locate Jekyll source under `docs` folder of master branch in your repo `github.com/my-org/my-proj`, the website will be served on `my-org.github.io/my-proj`.
-The good thing about coupling your documentation with the source repo is, whenever you merge features with regarding content to master branch, it will also be published on the webpage instantly.
+[Glyphboard](https://github.com/visualengineers/glyphboard) is an open tool for visual analysis of high-dimensional data. The prototype was developed at Technische Universität Dresden in cooperation with Mercateo AG, chemmedia AG, and deecoob Technology GmbH as part of the [VANDA project](https://vanda-project.de/).
 
-1. Just [download the source](https://github.com/aksakalli/jekyll-doc-theme/archive/gh-pages.zip) into your repo under `docs` folder.
-2. Edit site settings in  `_config.yml` file according to your project. !!! `baseurl` should be your website's relative URI like `/my-proj` !!!
-3. Replace `favicon.ico` and `img/logonav.png` with your own logo.
+### Prerequisites
 
-## Writing content
+#### Install Node 
 
-### Docs
+Download and install [NodeJS](https://nodejs.org/en/download/). Verify that you are running at least node 4.x.x and npm 3.x.x by running `node -v` and `npm -v` in a terminal/console window. Older versions produce errors, but newer versions are fine.
 
-Docs are [collections](https://jekyllrb.com/docs/collections/) of pages stored under `_docs` folder. To create a new page:
+#### Install Angular for Frontend
 
-**1.** Create a new Markdown as `_docs/my-page.md` and write [front matter](https://jekyllrb.com/docs/frontmatter/) & content such as:
+Download and install command line interface of [Angular.IO](https://angular.io/) via NPM. We are using [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
 
-```
----
-title: My Page
-permalink: /docs/my-page/
----
+`npm install -g @angular/cli`
 
-Hello World!
-```
+#### Install Python for Data Backend
 
-**2.** Add the pagename to `_data/docs.yml` file in order to list in docs navigation panel:
+Please refer to [glyphboard-backend](https://github.com/visualengineers/glyphboard-backend) documentation.
+
+#### Build and Run
+
+Clone project and submodules [Glyphboard](https://github.com/visualengineers/glyphboard):
 
 ```
-- title: My Group Title
-  docs:
-  - my-page
+$ git clone --recursive git@github.com:visualengineers/glyphboard.git
 ```
 
-### Blog posts
+This should yield the following directory structure of the project:
 
-Add a new Markdown file such as `2017-05-09-my-post.md` and write the content similar to other post examples.
+```
+glyphboard/
+├── backend/         --> python backend (see above)
+├── node_modules/    --> created after npm install
+├── e2e/ 
+└── src/
+    ├── app/
+    │   ├── home/    --> main component
+    │   └── shared/  --> components
+    ├── assets/      --> static files
+    └── environments/
+```
 
-### Pages
+Enter directory and run `npm install`
 
-The homepage is located under `index.html` file. You can change the content or design completely different welcome page for your taste. (You can use [bootstrap components](http://getbootstrap.com/components/))
-
-In order to add a new page, create a new `.html` or `.md` (markdown) file under root directory and link it in `_includes/topnav.html`.
+Run `npm start` for a dev server inside the project directory. Navigate to `http://localhost:4200/` for the client and `http://localhost:4201/` to test the backend. The app will automatically reload if you change any of the source files, but you will have to restart manually if you change the python backend.

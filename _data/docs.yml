@@ -1,11 +1,10 @@
 - title: Getting Started
   docs:
   - home
-  - themes
-  - customization
+  - reading
 
-- title: Examples
+- title: Tutorials
   docs:
-  - cheatsheet
-  - font-awesome
-  - bootstrap
+  - deployment
+  - technologies
+  - eventaggregator
