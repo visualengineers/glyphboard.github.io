@@ -6,7 +6,7 @@ redirect_from: /glyphboard-doc/
 
 ## Getting started
 
-[Glyphboard](https://github.com/visualengineers/glyphboard) is an open tool for visual analysis of high-dimensional data. The prototype was developed at Technische Universität Dresden in cooperation with Mercateo AG, chemmedia AG, and deecoob Technology GmbH as part of the [VANDA project](https://vanda-project.de/).
+[Glyphboard](https://github.com/visualengineers/glyphboard) is an open tool for visual analysis of high-dimensional data. The prototype was developed at Technische Universität Dresden in cooperation with Mercateo AG, chemmedia AG, and deecoob Technology GmbH as part of the [VANDA project](https://vanda-project.de/). If you want to test the application, please visit [glyphboard.mediadesign-tud.de](http://glyphboard.mediadesign-tud.de).
 
 ### Prerequisites
 
