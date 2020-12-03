@@ -2,6 +2,12 @@
 
 This documentation is based on Jekyll Doc Theme. Go to [the website](https://aksakalli.github.io/jekyll-doc-theme/) for detailed information and demo. Visit the [Glyphboard Documentation](https://visualengineers.github.io/glyphboard-doc/).
 
+<sub><sup>From 2016–2019 the development of Glyphboard has been supported by the European Union through the European Regional Development Fund and the
+Free State of Saxony, Germany (Visual Analytics Interfaces for Big Data Environments (VANDA) – project no. 100238473).</sup></sub>
+
+![Funding by European Union through the European Regional Development Fund](img/funding_erdf.png?raw=true)
+
+
 ## Running locally
 
 You need Ruby and gem before starting, then:
