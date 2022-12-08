@@ -3,69 +3,49 @@ title: Deployment
 permalink: /deployment/
 ---
 
-Currently, the project is deployed on a TU Dresden web server using [Ajenti V](http://ajenti.org/). There must be a new Ajenti Website such as `glyphboard.mediadesign-tud.de` with Website fiels `/srv/websites/glyphboardmediadesign-tudde`.
+Currently, the project is deployed on a [HTW Dresden web server](http://itv21.informatik.htw-dresden.de:4200/) using Docker.
 
-### Build
+### Deploy
 
-Deployment package is locally build using the production environment:
-
-```bash
-$ ng build --prod
-```
-
-Or a specific build environment such as:
+Install Docker and Docker-Compose on the host system:
 
 ```bash
-$ ng build --configuration=medical
+$ sudo apt-get install docker
+$ sudo apt-get install docker-compose
 ```
 
-SSH to App-Server and `git clone --recursive git@github.com:visualengineers/glyphboard.git` (add SSH-Key from server to project first).
+Clone the glyphboard repository including the backend submodule, then run docker-compose
 
-Upload files from `dist` folder to new Ajenti Website via FTP user (root directory). Or build directly on server and copy contents of `dist` to root folder.
+```bash
+$ git clone https://github.com/visualengineers/glyphboard --recurse-submodules
+$ cd glyphboard
+$ docker-compose up -d --build
+```
 
 ### Frontend
 
-Add new `Static files` Content in Ajenti website:
+Make sure to set the correct backend address in `src/environments/environment.prod.ts`
 
-* URL Pattern: `/` (Exact)
 
-For Authentication see [online tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-14-04) for server setup.
-
-```bash
-$ sudo sh -c "echo -n 'user_name:' >> /etc/ajenti/.htpasswd"
-$ sudo sh -c "openssl passwd -apr1 >> /etc/ajenti/.htpasswd"
-```
-
-Add *Custom Configuration* in *Ajenti Website* under *Static Files*
-
-```
-auth_basic "Restricted Content";
-auth_basic_user_file /etc/ajenti/.htpasswd;
+```typescript
+export const environment = {
+  production: true,
+  backendAddress: 'http://your.server.com:4201/'
+};
 ```
 
 ### Backend
 
-For backend, install new Ajenti Task:
+You may have to adapt the allowed IPs in the `config.yml` file:
 
-```
-cd /srv/websites/glyphboardmediadesign-tudde/glyphboard/ && python backend/server.py
-```
-
-And Ajenti Job that executes the task on reboot. Open Terminal window in Ajenti and install Python libs for Ajenti run user:
-
-```bash
-& cd /srv/websites/glyphboardmediadesign-tudde/glyphboard/backend
-$ pip install -r requirements.txt
-```
-
-Create `Reverse Proxy` content in Ajenti website of glyphboard:
-
-* URL Pattern: `/backend` (Exact)
-* URL: `http://localhost:4201`
-
-Add *Custom configuration* under *Advanced*:
-
-```bash
-rewrite ^/backend/(.*)$ /$1 break;
-client_max_body_size 5M;
+```yaml
+base_dir: /
+data_folder: data
+upload_folder: data
+port: 4201
+cors: on
+allowed_ips:
+  - "127.0.0.1"
+  - "141.76.66"
+  - "141.56"
 ```
